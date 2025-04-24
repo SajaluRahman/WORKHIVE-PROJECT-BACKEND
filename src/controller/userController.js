@@ -120,5 +120,29 @@ const login = async (req, res) => {
     }
 };
 
-
-module.exports = {register , login};
+// Update Profile Controller
+const updateProfile = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { FirstName, LastName, UserName, dob, email, role } = req.body;
+      const profilePhoto = req.file ? req.file.filename : undefined;
+  
+      const updateData = { FirstName, LastName, UserName, dob, email, role };
+      if (profilePhoto) updateData.profilePhoto = profilePhoto;
+  
+      const updatedUser = await User.findByIdAndUpdate(id, updateData, {
+        new: true,
+      });
+  
+      res.status(200).json({
+        msg: "Profile updated successfully",
+        user: updatedUser,
+      });
+    } catch (error) {
+      console.error("Profile update error:", error);
+      res.status(500).json({ msg: "Server Error" });
+    }
+  };
+  
+  
+module.exports = {register , login , updateProfile};

@@ -51,6 +51,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Something went wrong!', error: err.message });
 });
 
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Connect to the database
 connectDB();
 
