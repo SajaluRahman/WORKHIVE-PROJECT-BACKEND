@@ -28,11 +28,13 @@ const { apiRouter } = require('./routes/index');
 const path = require("path");
 
 app.use(
-  cors({
-    origin: 'http://localhost:5173', // Allow frontend origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
+  cors(
+  //   {
+  //   origin: 'http://localhost:5173', // Allow frontend origin
+  //   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  //   allowedHeaders: ['Content-Type', 'Authorization'],
+  // }
+)
 );
 
 // Serve static files (images)
